@@ -11,9 +11,21 @@ public class ComplexNumber extends Number implements Diff, Div, Sum, Mult {
     protected String userNumber() {
         Scanner iScanner = new Scanner(System.in);
         System.out.printf("Введите первое число комплексного числа: ");
+        boolean flag1 = iScanner.hasNextDouble();
+        if (!flag1) {
+            System.out.println("Это было не число");
+            return "";
+        }
         String number1 = iScanner.nextLine();
+        number1 = number1.replace(",", ".");
         System.out.printf("Введите второе число комплесного числа: ");
+        boolean flag2 = iScanner.hasNextDouble();
+        if (!flag2) {
+            System.out.println("Это было не число");
+            return "";
+        }
         String number2 = iScanner.nextLine();
+        number2 = number2.replace(",", ".");
         // iScanner.close();
         return number1 + " + " + number2 + " i";
     }

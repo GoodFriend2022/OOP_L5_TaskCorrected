@@ -11,7 +11,13 @@ public abstract class Number {
     protected String userNumber() {
         Scanner iScanner = new Scanner(System.in);
         System.out.printf("Введите число: ");
+        boolean flag = iScanner.hasNextDouble();
+        if (!flag) {
+            System.out.println("Это было не число");
+            return "";
+        }
         String number = iScanner.nextLine();
+        number = number.replace(",", ".");
         // iScanner.close();
         return number;
     }

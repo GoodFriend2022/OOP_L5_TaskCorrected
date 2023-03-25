@@ -6,6 +6,7 @@ public class Calculator {
     "1. Рациональные.\n2. Комплексные.\n";
     private String programMenu = "Выберите какое действие Вы хотите произвести с числами?\n" +
     "1. Сложение.\n2. Вычитание.\n3. Умножение.\n4. Деление.\n";
+    private int selectProgramMenu = 4;
     private ArrayList<Number> calc;
 
     Menu menu1;
@@ -22,7 +23,7 @@ public class Calculator {
             RationalNumber num2 = new RationalNumber();
             RationalNumber result = new RationalNumber();
             this.menu2 = new Menu(programMenu);
-            if (menu2.getSelect() > 4 || menu2.getSelect() < 1) return;
+            if (menu2.getSelect() > this.selectProgramMenu || menu2.getSelect() < 1) return;
             num1.userNumber();
             num2.userNumber();
             this.calc.add(num1);
@@ -37,7 +38,7 @@ public class Calculator {
             ComplexNumber num2 = new ComplexNumber(); 
             ComplexNumber result = new ComplexNumber();
             this.menu2 = new Menu(programMenu);
-            if (menu2.getSelect() > 4 || menu2.getSelect() < 1) return;
+            if (menu2.getSelect() > this.selectProgramMenu || menu2.getSelect() < 1) return;
             num1.userNumber();
             num2.userNumber();
             this.calc.add(num1);

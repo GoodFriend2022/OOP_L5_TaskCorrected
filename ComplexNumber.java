@@ -1,48 +1,40 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ComplexNumber extends Number implements Diff, Div, Sum, Mult {
+public class ComplexNumber extends RationalNumber {
 
     public ComplexNumber() {
         super();
     }
 
     @Override
-    protected String userNumber() {
-        Scanner iScanner = new Scanner(System.in);
-        System.out.printf("Введите первое число комплексного числа: ");
-        boolean flag1 = iScanner.hasNextDouble();
-        if (!flag1) {
-            System.out.println("Это было не число");
-            return "";
-        }
-        String number1 = iScanner.nextLine();
-        number1 = number1.replace(",", ".");
-        System.out.printf("Введите второе число комплесного числа: ");
-        boolean flag2 = iScanner.hasNextDouble();
-        if (!flag2) {
-            System.out.println("Это было не число");
-            return "";
-        }
-        String number2 = iScanner.nextLine();
-        number2 = number2.replace(",", ".");
-        // iScanner.close();
-        return number1 + " + " + number2 + " i";
+    public void userNumber() {
+        super.setModel("первое число комплексного числа");
+        super.userNumber();
+        String num1 = super.number;
+        super.setModel("второе число комплексного числа");
+        super.userNumber();
+        String num2 = super.number;
+        super.setNumber(num1 + " + " + num2 + " i");
     }
 
     private ArrayList<Double> toArray(String number) {
+
+        
         String[] array = number.split(" ");
         ArrayList<Double> complex = new ArrayList<>();
         complex.add(Double.parseDouble(array[0]));
         complex.add(Double.parseDouble(array[2]));
         return complex;
     }
-
+A
     @Override
-    public String mult(Number number2) {
-        ArrayList<Double> n1 = toArray(super.number);
+    public Number mult(Number number1, Number number2) {
+        super.n = new ComplexNumber();
+        ArrayList<Double> n1 = toArray(number1.getNumber());
         ArrayList<Double> n2 = toArray(number2.getNumber());
         if (n1.get(0) == n2.get(0) && n1.get(1) == -n2.get(1)) {
+
             return String.format("%.2f", n1.get(0) * n1.get(0) + n1.get(1) * n1.get(1));
         }
         ArrayList<Double> result = new ArrayList<>();
@@ -57,8 +49,9 @@ public class ComplexNumber extends Number implements Diff, Div, Sum, Mult {
     }
 
     @Override
-    public String sum(Number number2) {
-        ArrayList<Double> n1 = toArray(super.number);
+    public Number sum(Number number1, Number number2) {
+        super.n = new ComplexNumber();
+        ArrayList<Double> n1 = toArray(number1.getNumber());
         ArrayList<Double> n2 = toArray(number2.getNumber());
         if (n1.get(1) == -n2.get(1)) {
             return String.format("%.2f", n1.get(0) + n2.get(0));
@@ -75,8 +68,9 @@ public class ComplexNumber extends Number implements Diff, Div, Sum, Mult {
     }
 
     @Override
-    public String div(Number number2) {
-        ArrayList<Double> n1 = toArray(super.number);
+    public Number div(Number number1, Number number2) {
+        super.n = new ComplexNumber();
+        ArrayList<Double> n1 = toArray(number1.getNumber());
         ArrayList<Double> n2 = toArray(number2.getNumber());
         if (n2.get(0) == 0 && n2.get(1) == 0) {
             return "Деление на ноль";
@@ -96,8 +90,9 @@ public class ComplexNumber extends Number implements Diff, Div, Sum, Mult {
     }
 
     @Override
-    public String diff(Number number2) {
-        ArrayList<Double> n1 = toArray(super.number);
+    public Number diff(Number number1, Number number2) {
+        super.n = new ComplexNumber();
+        ArrayList<Double> n1 = toArray(number1.getNumber());
         ArrayList<Double> n2 = toArray(number2.getNumber());
         if (n1.get(1) == n2.get(1)) {
             return String.format("%.2f", n1.get(0) - n2.get(0));

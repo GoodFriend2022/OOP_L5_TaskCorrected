@@ -1,3 +1,3 @@
 public interface Diff {
-    String diff(Number number2);
+    Number diff(Number number1, Number number2);
 }

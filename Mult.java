@@ -1,3 +1,3 @@
 public interface Mult {
-    String mult(Number number2);
+    Number mult(Number number1, Number number2);
 }

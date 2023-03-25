@@ -1,29 +1,27 @@
-import java.util.Scanner;
-
 public abstract class Number {
 
     protected String number;
+    protected Number n;
+    protected String model = "число";
+
+    public Number(String number) {
+        this.number = number;
+    }
+    
+    public Number() {
+        this("");
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+    
+    public void setNumber(String number) {
+        this.number = number;
+    }
     
     public String getNumber() {
         return number;
-    }
-
-    protected String userNumber() {
-        Scanner iScanner = new Scanner(System.in);
-        System.out.printf("Введите число: ");
-        boolean flag = iScanner.hasNextDouble();
-        if (!flag) {
-            System.out.println("Это было не число");
-            return "";
-        }
-        String number = iScanner.nextLine();
-        number = number.replace(",", ".");
-        // iScanner.close();
-        return number;
-    }
-
-    protected Number() {
-        this.number = userNumber();
     }
 
     @Override

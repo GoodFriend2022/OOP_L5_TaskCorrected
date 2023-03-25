@@ -1,3 +1,3 @@
 public interface Sum {
-    String sum(Number number2);
+    Number sum(Number number1, Number number2);
 }

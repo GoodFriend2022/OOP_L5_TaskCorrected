@@ -1,3 +1,3 @@
 public interface Div {
-    String div(Number number2);
+    Number div(Number number1, Number number2);
 }

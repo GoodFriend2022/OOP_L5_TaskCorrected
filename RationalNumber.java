@@ -2,8 +2,16 @@ import java.util.Scanner;
 
 public class RationalNumber extends Number implements InputNumber, Sum, Mult, Diff, Div {
 
+    
     public RationalNumber() {
         super();
+    }
+    
+    protected RationalNumber invers(Number number) {
+        String num = "-" + number.toString();
+        RationalNumber newNumber = new RationalNumber();
+        newNumber.setNumber(num);
+        return newNumber;
     }
 
     @Override
@@ -23,42 +31,61 @@ public class RationalNumber extends Number implements InputNumber, Sum, Mult, Di
     
     @Override
     public Number diff(Number number1, Number number2) {
-        super.n = new RationalNumber();
+        super.num = new RationalNumber();
         Double n1 = Double.parseDouble(number1.toString());
         Double n2 = Double.parseDouble(number2.toString());
         Double result = n1 - n2;
-        n.setNumber(result.toString());
-        return n;
+        super.num.setNumber(result.toString());
+        return super.num;
     }
-
+    
     @Override
     public Number mult(Number number1, Number number2) {
-        super.n = new RationalNumber();
+        super.num = new RationalNumber();
         Double n1 = Double.parseDouble(number1.toString());
         Double n2 = Double.parseDouble(number2.toString());
         Double result = n1 * n2;
-        n.setNumber(result.toString());
-        return n;
+        super.num.setNumber(result.toString());
+        return super.num;
     }
-
+    
     @Override
     public Number sum(Number number1, Number number2) {
-        super.n = new RationalNumber();
+        super.num = new RationalNumber();
         Double n1 = Double.parseDouble(number1.toString());
         Double n2 = Double.parseDouble(number2.toString());
         Double result = n1 + n2;
-        n.setNumber(result.toString());
-        return n;
+        super.num.setNumber(result.toString());
+        return super.num;
     }
 
     @Override
     public Number div(Number number1, Number number2) {
-        super.n = new RationalNumber();
+        super.num = new RationalNumber();
         Double n1 = Double.parseDouble(number1.toString());
         Double n2 = Double.parseDouble(number2.toString());
         Double result = n1 / n2;
-        n.setNumber(result.toString());
-        return n;
+        super.num.setNumber(result.toString());
+        return super.num;
+    }
+    
+    @Override
+    public Number sum(Number number) {
+        return this.sum(number, number);
     }
 
+    @Override
+    public Number mult(Number number) {
+        return this.mult(number, number);
+    }
+
+    @Override
+    public Number diff(Number number) {
+        return this.diff(number, number);
+    }
+
+    @Override
+    public Number div(Number number) {
+        return this.div(number, number);
+    }
 }

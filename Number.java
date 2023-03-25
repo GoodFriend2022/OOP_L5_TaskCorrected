@@ -1,7 +1,7 @@
 public abstract class Number {
 
     protected String number;
-    protected Number n;
+    protected Number num;
     protected String model = "число";
 
     public Number(String number) {
@@ -27,5 +27,11 @@ public abstract class Number {
     @Override
     public String toString() {
         return String.format("%s", this.number);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        else return this.getNumber().equals((String) obj);
     }
 }

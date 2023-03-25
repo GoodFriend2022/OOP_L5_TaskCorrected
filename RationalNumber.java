@@ -8,7 +8,12 @@ public class RationalNumber extends Number implements InputNumber, Sum, Mult, Di
     }
     
     protected RationalNumber invers(Number number) {
-        String num = "-" + number.toString();
+        String num = number.getNumber();
+        if (num.startsWith("-")) {
+            num.replace("-", "");
+        } else {
+            num = "-" + num;
+        }
         RationalNumber newNumber = new RationalNumber();
         newNumber.setNumber(num);
         return newNumber;
@@ -19,14 +24,15 @@ public class RationalNumber extends Number implements InputNumber, Sum, Mult, Di
         super.setModel("рациональное число");
         Scanner iScanner = new Scanner(System.in);
         System.out.printf("Введите %s: ", super.model);
-        boolean flag = iScanner.hasNextDouble();
-        if (!flag) {
-            System.out.println("Это было не число");
-        }
         String number = iScanner.nextLine();
         number = number.replace(",", ".");
-        super.setNumber(number);
-        // iScanner.close();
+        try {
+            Double.parseDouble(number);
+            super.setNumber(number);
+        } catch (Exception e) {
+            System.out.println("Это не число");
+            iScanner.close();
+        } 
     }
     
     @Override
